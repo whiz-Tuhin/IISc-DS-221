@@ -6,41 +6,44 @@
 
 using namespace std;
 
+/**
+ * Class extends the Node class to implement the functions
+*/
 class TreeNode: public Node {
 	public:
 		/* validates an operator */
 		bool isOperator() {
-
+			/* Implement your logic here */
 		}
 		
 		/* get operator value */
 		char getOperator() {
-
+			/* Implement your logic here */
 		}
 
 		/* get operand value */
 		unsigned int getOperand() {
-
+			/* Implement your logic here */
 		}
 
 		/* get left child */
 		Node* getLeft() {
-			
+			/* Implement your logic here */			
 		}
 
 		/* get right child */
 		Node* getRight() {
-
+			/* Implement your logic here */
 		}
 
 		/* set left child */
 		void setLeft(Node* left) {
-
+			/* Implement your logic here */
 		}
 
 		/* set right child */
 		void setRight(Node* right) {
-
+			/* Implement your logic here */
 		}
 };
 
