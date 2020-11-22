@@ -1,3 +1,5 @@
+// TODO - add invalid expression result description
+
 #include <iostream>
 #include <stack>
 #include <string>
@@ -136,7 +138,7 @@ int main() {
 
 	/* Input taken from console */
 	cout << "Enter expression: ";
-	cin >> exp;
+	getline(cin, exp);
 
 	/**
      * QUESTION 1 - PART A
