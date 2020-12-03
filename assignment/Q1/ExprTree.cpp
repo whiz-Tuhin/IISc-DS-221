@@ -1,17 +1,42 @@
-// TODO - add invalid expression result description
-
 #include <iostream>
 #include <stack>
 #include <string>
 #include <cstddef>
-#include "Node.h"
+#include <limits>
 
 using namespace std;
 
 /**
- * Class extends the Node class to implement the functions
+ * Class for node 
 */
-class TreeNode : public Node {
+class ExprNode {
+private:
+	int type;
+	char operator_;
+	unsigned int operand_;
+	ExprNode *left, *right;
+
+public:
+	/* Constructor definitions */
+	ExprNode(unsigned int operand) {
+		type = 1;
+		operand_ = operand;
+		operator_ = 0;
+		left = NULL;
+		right = NULL;
+	}
+
+	ExprNode(char op) {
+		if (op == '+' || op == '-' || op == '*' || op == '/') {
+			type = 0;
+			operator_ = op;
+			left = NULL;
+			right = NULL;
+		} else {
+			throw invalid_argument("Invalid operator");
+		}
+	}
+
 public:
 	/* validates an operator */
 	bool isOperator() {
@@ -29,23 +54,27 @@ public:
 	}
 
 	/* get left child */
-	Node *getLeft() {
+	ExprNode* getLeft() {
 		/* Implement your logic here */
+		return left;
 	}
 
 	/* get right child */
-	Node *getRight() {
+	ExprNode* getRight() {
 		/* Implement your logic here */
+		return right;
 	}
 
 	/* set left child */
-	void setLeft(Node *left) {
+	void setLeft(ExprNode* left) {
 		/* Implement your logic here */
+		this->left =left;
 	}
 
 	/* set right child */
-	void setRight(Node *right) {
+	void setRight(ExprNode* right) {
 		/* Implement your logic here */
+		this->right = right;
 	}
 };
 
@@ -55,8 +84,8 @@ public:
  * @param exp - string expression for which tree is to be constructed
  * @return node - returns 
 */
-Node *buildInfixTree(string exp) {
-	Node *root = NULL;
+ExprNode* buildInfixTree(string exp) {
+	ExprNode* root;
 
 	/* Implement your logic here */
 
@@ -69,7 +98,7 @@ Node *buildInfixTree(string exp) {
  * @param root - reference to the root of the infix tree
  * @returns - resultant expression after pre order traversal
 */
-string printPreOrderTraversal(Node *root) {
+string printPreOrderTraversal(ExprNode* root) {
 	string result;
 
 	/* Implement your logic here */
@@ -83,13 +112,16 @@ string printPreOrderTraversal(Node *root) {
  * @param root - reference to the root of the infix tree
  * @returns - result after expression is evaluated
 */
-int evaluate(Node *root) {
+int evaluate(ExprNode* root) {
 	int result;
-	stack<Node *> st;
 
 	/* Implement your logic here */
 
 	return result;
+}
+
+int getIntMin() {
+	return numeric_limits<int>::min();
 }
 
 /**
@@ -166,7 +198,7 @@ int main() {
     */
 
 	/* Construct infix expression tree */
-	Node *root = buildInfixTree(exp);
+	ExprNode *root = buildInfixTree(exp);
 
 	/* Print pre order traversal */
 	string preOrderResult = printPreOrderTraversal(root);
